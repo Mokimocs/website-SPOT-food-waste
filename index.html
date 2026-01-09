@@ -31,6 +31,58 @@
       pointer-events: auto; 
         }
 
+    .panel{
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 20;
+      display: none;
+
+      width: 85vw;
+      max-width: 800px;
+
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+      pointer-events: auto;
+    }
+
+    .panel-inner{
+      padding: 22px;
+      font-family: system-ui, Arial, sans-serif;
+      line-height: 1.35;
+      position: relative;
+    }
+
+    #closeSpotPanel{
+      position: absolute;
+      top: 10px;
+      right: 14px;
+      background: none;
+      border: none;
+      font-size: 26px;
+      cursor: pointer;
+    }
+
+    .choices{
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin: 14px 0;
+    }
+    .choice-btn{
+      padding: 10px 12px;
+      border-radius: 10px;
+      border: 1px solid #ddd;
+      background: #f7f7f7;
+      cursor: pointer;
+    }
+    .choice-result{
+      margin-top: 10px;
+      opacity: 0.9;
+    }
+
     </style>
 <title>Page Title</title>
 </head>
@@ -44,6 +96,44 @@
   >
 
   <img id= "popupImg" alt="popup"> 
+
+  <!-- SPOT panel -->
+    <section class="panel panel-spot" id="spotPanel">
+      <div class="panel-inner">
+        <button id="closeSpotPanel">×</button>
+
+        <h2>SPOT · Our Table</h2>
+        <p class="stat">
+          SPOT wastes 250gr of food per person each day.
+        </p>
+        <p class="context">
+          A year, roughly <strong>25,000kg</strong> 
+          <em>(7 euros per kg)</em>.
+        </p>
+        <p>
+        This amounts to <strong> 175,000 euros</strong> on waste every year.
+        </p>
+        <p class="reflect">
+          Next lunch, what’s one small thing you might do differently?
+        </p>
+
+        <div class="choices">
+          <button class="choice-btn" data-choice="portion">
+            Take smaller portions first
+          </button>
+          <button class="choice-btn" data-choice="leftovers">
+            Save leftovers for later
+          </button>
+          <button class="choice-btn" data-choice="veggies">
+            Finish veggies before dessert
+          </button>
+        </div>
+
+        <p class="choice-result" id="choiceResult">
+          Tap one option to see its impact.
+        </p>
+      </div>
+    </section>
 
   <!-- SVG overlay -->
   <svg
@@ -83,7 +173,7 @@
       stroke-width="0"
       filter="url(#glow)"
       style="pointer-events:auto; cursor:pointer;"
-      onclick="showImg('images/Mexicopanel.png')"
+      onclick="showImg('images/Mexicopanel.png','mexico')"
     />
 
     <!-- Portugal -->
@@ -96,7 +186,7 @@
       stroke-width="0"
       filter="url(#glow)"
       style="pointer-events:auto; cursor:pointer;"
-      onclick="showImg('images/Portugalpanel.png')"
+      onclick="showImg('images/Portugalpanel.png','portugal')"
     />
 
     <!-- Nigeria -->
@@ -109,7 +199,7 @@
       stroke-width="0"
       filter="url(#glow)"
       style="pointer-events:auto; cursor:pointer;"
-      onclick="showImg('images/Nigeriapanel.png')"
+      onclick="showImg('images/Nigeriapanel.png','nigeria')"
     />
 
      <!-- India -->
@@ -131,30 +221,13 @@
       stroke-width="0"
       filter="url(#glow)"
       style="pointer-events:auto; cursor:pointer;"
-      onclick="showImg('images/Indiapanel.png')"
+      onclick="showImg('images/Indiapanel.png','india')"
     />
 
   </svg>
 </div>
 
-<script>
-  function showImg(src) {
-    const img = document.getElementById('popupImg');
-    img.src = src;
 
-    img.style.left = "50%";
-    img.style.top = "50%";
-    img.style.transform = "translate(-50%, -50%)";
-
-    img.style.display = 'block';
-  }
-
-  document.getElementById('popupImg').addEventListener('click', () => {
-    document.getElementById('popupImg').style.display = 'none';
-  });
-</script>
-
-
-
+<script src="script.js"></script>
 </body>
 </html>
