@@ -12,7 +12,19 @@ window.showImg = function (src, countryKey) {
   img.style.left = "50%";
   img.style.top = "50%";
   img.style.transform = "translate(-50%, -50%)";
-  img.style.display = 'block';
+    img.style.display = 'block';
+
+    // Countries Clicked Display
+    const counterEl = document.getElementById("count");
+
+    if (countryKey) {
+        clickedCountries.add(countryKey);
+        counterEl.textContent = clickedCountries.size;
+
+        if (clickedCountries.size === totalCountries) {
+            readyToShowSpot = true;
+        }
+    }
 
   if (countryKey) {
     const before = clickedCountries.size;
