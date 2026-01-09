@@ -1,0 +1,21 @@
+/*Progress Bar Style*/
+
+#progressContainer {
+    position: absolute;
+    top: 10px;
+    left:10px;
+    width: 200px;
+    height: 14px;
+    background: #eee;
+    border-radius: 10px;
+    overflow: hidden;
+    z-index: 200;
+    border: 1px solid red;
+}
+
+#progressBar {
+    width: 0%;
+    height: 100%;
+    background: #2ecc71;
+    transition: width 0.3s ease;
+}

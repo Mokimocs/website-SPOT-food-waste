@@ -12,19 +12,7 @@ window.showImg = function (src, countryKey) {
   img.style.left = "50%";
   img.style.top = "50%";
   img.style.transform = "translate(-50%, -50%)";
-    img.style.display = 'block';
-
-    // Countries Clicked Display
-    const counterEl = document.getElementById("count");
-
-    if (countryKey) {
-        clickedCountries.add(countryKey);
-        counterEl.textContent = clickedCountries.size;
-
-        if (clickedCountries.size === totalCountries) {
-            readyToShowSpot = true;
-        }
-    }
+    img.style.display = 'block';    
 
   if (countryKey) {
     const before = clickedCountries.size;
@@ -34,7 +22,19 @@ window.showImg = function (src, countryKey) {
     if (after === totalCountries && after !== before) {
       readyToShowSpot = true;
     }
-  }
+    }
+
+    // Countries Clicked Display
+
+    if (countryKey) {
+        clickedCountries.add(countryKey);
+
+        const progress =
+            (clickedCountries.size / totalCountries) * 100;
+
+        document.getElementById("progressBar").style.width =
+            progress + "%";
+    }
 };
 
 // Close popup

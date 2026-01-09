@@ -6,85 +6,85 @@
             margin: 0;
             padding: 0;
         }
+
         .imgbox {
             display: grid;
             height: 100%;
         }
+
         .center-fit {
             max-width: 100%;
             max-height: 100vh;
             margin: auto;
         }
-        
-    #popupImg{
-      position: absolute;
-      z-index: 10;          
-      display: none;    
-      
-      width: 85vw;
-      max-width: 800px;
-      max-height: 85vh;
-      height: auto;
 
-      border-radius: 12px;
-      box-shadow: 0 20px 40px rgba(0,0,0,0.4);
-      pointer-events: auto; 
+        #popupImg {
+            position: absolute;
+            z-index: 10;
+            display: none;
+            width: 85vw;
+            max-width: 800px;
+            max-height: 85vh;
+            height: auto;
+            border-radius: 12px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+            pointer-events: auto;
         }
 
-    .panel{
-      position: absolute;
-      left: 50%;
-      top: 50%;
-      transform: translate(-50%, -50%);
-      z-index: 20;
-      display: none;
+        .panel {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 20;
+            display: none;
+            width: 85vw;
+            max-width: 800px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+            pointer-events: auto;
+        }
 
-      width: 85vw;
-      max-width: 800px;
+        .panel-inner {
+            padding: 22px;
+            font-family: system-ui, Arial, sans-serif;
+            line-height: 1.35;
+            position: relative;
+        }
 
-      background: white;
-      border-radius: 12px;
-      box-shadow: 0 20px 40px rgba(0,0,0,0.4);
-      pointer-events: auto;
-    }
+        #closeSpotPanel {
+            position: absolute;
+            top: 10px;
+            right: 14px;
+            background: none;
+            border: none;
+            font-size: 26px;
+            cursor: pointer;
+        }
 
-    .panel-inner{
-      padding: 22px;
-      font-family: system-ui, Arial, sans-serif;
-      line-height: 1.35;
-      position: relative;
-    }
+        .choices {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin: 14px 0;
+        }
 
-    #closeSpotPanel{
-      position: absolute;
-      top: 10px;
-      right: 14px;
-      background: none;
-      border: none;
-      font-size: 26px;
-      cursor: pointer;
-    }
+        .choice-btn {
+            padding: 10px 12px;
+            border-radius: 10px;
+            border: 1px solid #ddd;
+            background: #f7f7f7;
+            cursor: pointer;
+        }
 
-    .choices{
-      display: flex;
-      gap: 10px;
-      flex-wrap: wrap;
-      margin: 14px 0;
-    }
-    .choice-btn{
-      padding: 10px 12px;
-      border-radius: 10px;
-      border: 1px solid #ddd;
-      background: #f7f7f7;
-      cursor: pointer;
-    }
-    .choice-result{
-      margin-top: 10px;
-      opacity: 0.9;
-    }
-
+        .choice-result {
+            margin-top: 10px;
+            opacity: 0.9;
+        }
     </style>
-<title>Page Title</title>
+    <title>Page Title</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
@@ -94,14 +94,15 @@
     alt="map"
     style="width:100%; height:auto; display:block;"
   >
+        <img id= "popupImg" alt="popup"> 
 
     <!-- Clicked countries display -->
 
-    <div id="countryCounter">
-        Countries Clicked : <span id="count">0</span>/4>
+    <div id="progressContainer" style="position:absolute; top:10px; left:10px; width:200px; height:14px; background:#eee; border-radius:10px; overflow:hidden; z-index:500";>
+        <div id="progressBar" style="width:0%; height:100%; background:#2ecc71; transition: width 0.3s ease;"></div>
     </div>
 
-  <img id= "popupImg" alt="popup"> 
+  
 
   <!-- SPOT panel -->
     <section class="panel panel-spot" id="spotPanel">
