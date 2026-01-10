@@ -19,3 +19,31 @@
     background: #2ecc71;
     transition: width 0.3s ease;
 }
+
+.spot-logo {
+  position: absolute;
+  top: 16px;
+  right: 50px;
+
+  width: 170px;        
+  height: auto;
+}
+
+#spotPanel .panel-inner { /* centering text in the spot panel */
+    text-align: center;
+}
+
+#spotPanel .choices { /* centering buttons */
+    justify-content: center;
+}
+
+#spotPanel h2 {
+    margin-bottom: 22px;
+}
+
+#spotPanel .highlight {
+    margin-bottom: 16px;
+}
+
+
+
