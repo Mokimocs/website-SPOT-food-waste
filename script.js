@@ -35,7 +35,8 @@ window.showPanel = function (countryKey) {
 // Close popup
 const panels = document.getElementsByClassName('panel');
 const closePanelButtons = document.getElementsByClassName('closePanel');
-[...panels, ...closePanelButtons].forEach(panel => panel.addEventListener('click', () => {
+console.log(closePanelButtons)
+Array.from(closePanelButtons).forEach(panel => panel.addEventListener('click', () => {
   for (let i = 0; i < panels.length; i++) {
     panels[i].style.display = 'none';
   }
