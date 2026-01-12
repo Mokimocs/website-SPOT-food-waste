@@ -13,7 +13,7 @@
 </head>
 
 <body>
-  <div class="imgbox" style="position: relative; width: 100%; max-width: 2000px;">
+  <div class="imgbox">
     <img src="images/A_large_blank_world_map_with_oceans_marked_in_blue.svg.png" alt="map"
       style="width:100%; height:auto; display:block;">
 
@@ -30,7 +30,7 @@
       <div class="panel-inner">
         <button class="closePanel">�</button>
 
-        <img src="images/Spotlogo.png" alt="SPOT logo" class="spot-logo" />
+        <img src="images/Spotlogo.png" alt="SPOT logo" id="spot-logo" />
 
         <h2>SPOT � Our Table</h2>
         <p class="stat">
@@ -65,44 +65,86 @@
       </div>
     </section>
 
-    <section class='panel' id="nigeriaPopup">
+    <!--Other panels -->
+
+    <section class='side-panel' id="nigeriaPopup">
       <div class='panel-inner'>
         <button class="closePanel">X</button>
 
         <h2>Nigeria</h2>
         <hr>
+        <p>
+          Nigeria is ranked first in food waste in Africa, losing 40% of its food production annually due to poor
+          infrastructure, storage, and transport.
+          <br><br>
+          When there’s “too much food” at your social gatherings what usually happens to it?<br><br>
+          Source:<br><br>
+          (Top 10 African countries with the highest food waste | Adekunle Agbetiloye, 2024)
+        </p>
       </div>
     </section>
 
-    <section class='panel' id="mexicoPopup">
+    <section class='side-panel' id="mexicoPopup">
       <div class='panel-inner'>
         <button class="closePanel">X</button>
 
         <h2>Mexico</h2>
         <hr>
+        <p>
+          Every year, over 35% of the food produced in Mexico is wasted — an estimated 25 billion dollars worth.
+          <br><br>
+          When you waste food what do you usually waste first -- vegetables, fruit, leftovers?
+          <br><br>
+          Source:<br><br>
+          (Mexico’s Answer to Food Waste | Manu R, 2025)<br><br>
+          (Expertise in Waste Solutions | WasteCulture, 2020)
+        </p>
       </div>
     </section>
 
-    <section class='panel' id="indiaPopup">
+    <section class='side-panel' id="indiaPopup">
       <div class='panel-inner'>
         <button class="closePanel">X</button>
 
         <h2>India</h2>
         <hr>
+        <br>
+        <p>
+          In India 12% of the population is undernourished, whilst the average household discards 55 kg of food
+          annually, totalling a national loss of 78.2 million tonnes.
+          <br><br>
+          Do you know about this hunger and waste paradox?
+          <br><br>
+          Source:<br><br>
+          (India’s food waste is turning into an environmental time bomb | Choudhury, 2025)<br><br>
+          (The State of Food Security and Nutrition in the World 2025, 2025)<br><br>
+          (India | Global Hunger Index, 2025)<br><br>
+          (Food Waste Index Report | Nations, 2024)
+
+        </p>
       </div>
     </section>
 
-    <section class='panel' id="portugalPopup">
+    <section class='side-panel' id="portugalPopup">
       <div class='panel-inner'>
         <button class="closePanel">X</button>
 
         <h2>Portugal</h2>
         <hr>
+        <br>
+        <p>In Portugal, in 2022, food waste per capita amounted to 185 kilograms. The majority of the waste originated
+          from households, as each family generated 123 kilos of food waste per individual.
+          <br><br>
+          Think about your own family, how much do you waste daily?
+          <br><br>
+          Source:<br><br>
+          (Portugal: Food Waste per Capita, by Sector 2022 | Statista, 2022)
+        </p>
       </div>
     </section>
 
     <!-- SVG overlay -->
-    <svg viewBox="0 0 2000 1001" style="position:absolute; inset:0; width:100%; height:100%; pointer-events:auto;">
+    <svg viewBox="0 0 2000 1000" style="position:absolute; inset:0; width:100%; height:100%; pointer-events:auto;">
       <defs>
         <filter id="glow">
           <feGaussianBlur stdDeviation="6" result="blur" />
@@ -176,4 +218,5 @@
   <link rel="stylesheet" href="style.css">
   <script src="script.js"></script>
 </body>
+
 </html>

@@ -20,7 +20,7 @@
     transition: width 0.3s ease;
 }
 
-.spot-logo {
+#spot-logo {
     position: absolute;
     top: 16px;
     right: 50px;
@@ -48,8 +48,9 @@
 }
 
 .imgbox {
-    display: grid;
-    height: 100%;
+    position: relative;
+    width: 100%;
+    height: auto;
 }
 
 .center-fit {
@@ -78,6 +79,23 @@
     font-family: system-ui, Arial, sans-serif;
     line-height: 1.35;
     position: relative;
+}
+
+.side-panel {
+    position: absolute;
+    content-visibility: hidden;
+    left: 80%;
+    top: 0%;
+    z-index: 20;
+    visibility: hidden;
+    width: 0;
+    transition: all 1s;
+    animation-duration: 1s;
+    height: 100vh;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+    pointer-events: auto;
 }
 
 .closePanel {
@@ -115,4 +133,9 @@
     cursor: pointer;
     filter: url(#glow);
     pointer-events: auto;
+}
+
+.animation {
+    width: 20vw;
+    content-visibility: visible;
 }

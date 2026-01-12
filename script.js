@@ -7,12 +7,11 @@ let readyToShowSpot = false;
 // popup images controller
 window.showPanel = function (countryKey) {
   const panel = document.getElementById(`${countryKey}Popup`);
-  panel.style.display = "block";
+  panel.style.visibility = "visible";
+  panel.classList.add("animation");
 
   if (countryKey) {
-    const before = clickedCountries.size;
     clickedCountries.add(countryKey);
-    const after = clickedCountries.size;
 
     if (clickedCountries.size == 4) {
       readyToShowSpot = true;
@@ -33,12 +32,12 @@ window.showPanel = function (countryKey) {
 };
 
 // Close popup
-const panels = document.getElementsByClassName('panel');
+const panels = document.getElementsByClassName('side-panel');
 const closePanelButtons = document.getElementsByClassName('closePanel');
-console.log(closePanelButtons)
 Array.from(closePanelButtons).forEach(panel => panel.addEventListener('click', () => {
   for (let i = 0; i < panels.length; i++) {
-    panels[i].style.display = 'none';
+    panels[i].style.visibility = 'hidden';
+    panels[i].classList.remove("animation");
   }
   document.getElementById('spotPanel').style.display = 'none';
   if (readyToShowSpot) {
