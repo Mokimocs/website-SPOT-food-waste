@@ -5,52 +5,46 @@ const totalCountries = 4;
 let readyToShowSpot = false;
 
 // popup images controller
-window.showImg = function (src, countryKey) {
-  const img = document.getElementById('popupImg');
-  img.src = src;
-
-  img.style.left = "50%";
-  img.style.top = "50%";
-  img.style.transform = "translate(-50%, -50%)";
-    img.style.display = 'block';    
+window.showPanel = function (countryKey) {
+  const panel = document.getElementById(`${countryKey}Popup`);
+  panel.style.display = "block";
 
   if (countryKey) {
     const before = clickedCountries.size;
     clickedCountries.add(countryKey);
     const after = clickedCountries.size;
 
-    if (after === totalCountries && after !== before) {
+    if (clickedCountries.size == 4) {
       readyToShowSpot = true;
     }
-    }
+  }
 
-    // Countries Clicked Display
+  // Countries Clicked Display
 
-    if (countryKey) {
-        clickedCountries.add(countryKey);
+  if (countryKey) {
+    clickedCountries.add(countryKey);
 
-        const progress =
-            (clickedCountries.size / totalCountries) * 100;
+    const progress =
+      (clickedCountries.size / totalCountries) * 100;
 
-        document.getElementById("progressBar").style.width =
-            progress + "%";
-    }
+    document.getElementById("progressBar").style.width =
+      progress + "%";
+  }
 };
 
 // Close popup
-document.getElementById('popupImg').addEventListener('click', () => {
-  document.getElementById('popupImg').style.display = 'none';
-
+const panels = document.getElementsByClassName('panel');
+const closePanelButtons = document.getElementsByClassName('closePanel');
+[...panels, ...closePanelButtons].forEach(panel => panel.addEventListener('click', () => {
+  for (let i = 0; i < panels.length; i++) {
+    panels[i].style.display = 'none';
+  }
+  document.getElementById('spotPanel').style.display = 'none';
   if (readyToShowSpot) {
     document.getElementById('spotPanel').style.display = 'block';
     readyToShowSpot = false;
   }
-});
-
-// Close SPOT button
-document.getElementById('closeSpotPanel').addEventListener('click', () => {
-  document.getElementById('spotPanel').style.display = 'none';
-});
+}))
 
 // Choice buttons logic
 const choiceButtons = document.querySelectorAll(".choice-btn");
@@ -60,9 +54,9 @@ const messages = {
   portion:
     "If 100 people at SPOT took smaller portions first, we could prevent hundreds of kilos of food waste per year.",
   leftovers:
-    "If 100 people regularly saved leftovers, we’d turn a big share of our ‘waste’ into tomorrow’s lunch.",
+    "If 100 people regularly saved leftovers, weï¿½d turn a big share of our ï¿½wasteï¿½ into tomorrowï¿½s lunch.",
   veggies:
-    "If 100 people finished their veggies more often, we’d cut both food and resource waste linked to vegetables.",
+    "If 100 people finished their veggies more often, weï¿½d cut both food and resource waste linked to vegetables.",
 };
 
 choiceButtons.forEach((btn) => {

@@ -3,7 +3,7 @@
 #progressContainer {
     position: absolute;
     top: 10px;
-    left:10px;
+    left: 10px;
     width: 200px;
     height: 14px;
     background: #eee;
@@ -21,19 +21,21 @@
 }
 
 .spot-logo {
-  position: absolute;
-  top: 16px;
-  right: 50px;
+    position: absolute;
+    top: 16px;
+    right: 50px;
 
-  width: 170px;        
-  height: auto;
+    width: 170px;
+    height: auto;
 }
 
-#spotPanel .panel-inner { /* centering text in the spot panel */
+#spotPanel .panel-inner {
+    /* centering text in the spot panel */
     text-align: center;
 }
 
-#spotPanel .choices { /* centering buttons */
+#spotPanel .choices {
+    /* centering buttons */
     justify-content: center;
 }
 
@@ -45,5 +47,72 @@
     margin-bottom: 16px;
 }
 
+.imgbox {
+    display: grid;
+    height: 100%;
+}
 
+.center-fit {
+    max-width: 100%;
+    max-height: 100vh;
+    margin: auto;
+}
 
+.panel {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 20;
+    display: none;
+    width: 85vw;
+    max-width: 800px;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+    pointer-events: auto;
+}
+
+.panel-inner {
+    padding: 22px;
+    font-family: system-ui, Arial, sans-serif;
+    line-height: 1.35;
+    position: relative;
+}
+
+.closePanel {
+    position: absolute;
+    top: 10px;
+    right: 14px;
+    background: none;
+    border: none;
+    font-size: 26px;
+    cursor: pointer;
+}
+
+.choices {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin: 14px 0;
+}
+
+.choice-btn {
+    padding: 10px 12px;
+    border-radius: 10px;
+    border: 1px solid #ddd;
+    background: #f7f7f7;
+    cursor: pointer;
+}
+
+.choice-result {
+    margin-top: 10px;
+    opacity: 0.9;
+}
+
+.map-region {
+    fill: rgba(0, 255, 0, 1);
+    cursor: pointer;
+    filter: url(#glow);
+    pointer-events: auto;
+}

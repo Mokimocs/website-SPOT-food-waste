@@ -1,133 +1,50 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-        }
-
-        .imgbox {
-            display: grid;
-            height: 100%;
-        }
-
-        .center-fit {
-            max-width: 100%;
-            max-height: 100vh;
-            margin: auto;
-        }
-
-        #popupImg {
-            position: absolute;
-            z-index: 10;
-            display: none;
-            width: 85vw;
-            max-width: 800px;
-            max-height: 85vh;
-            height: auto;
-            border-radius: 12px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
-            pointer-events: auto;
-        }
-
-        .panel {
-            position: absolute;
-            left: 50%;
-            top: 50%;
-            transform: translate(-50%, -50%);
-            z-index: 20;
-            display: none;
-            width: 85vw;
-            max-width: 800px;
-            background: white;
-            border-radius: 12px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
-            pointer-events: auto;
-        }
-
-        .panel-inner {
-            padding: 22px;
-            font-family: system-ui, Arial, sans-serif;
-            line-height: 1.35;
-            position: relative;
-        }
-
-        #closeSpotPanel {
-            position: absolute;
-            top: 10px;
-            right: 14px;
-            background: none;
-            border: none;
-            font-size: 26px;
-            cursor: pointer;
-        }
-
-        .choices {
-            display: flex;
-            gap: 10px;
-            flex-wrap: wrap;
-            margin: 14px 0;
-        }
-
-        .choice-btn {
-            padding: 10px 12px;
-            border-radius: 10px;
-            border: 1px solid #ddd;
-            background: #f7f7f7;
-            cursor: pointer;
-        }
-
-        .choice-result {
-            margin-top: 10px;
-            opacity: 0.9;
-        }
-    </style>
-    <title>Page Title</title>
-    <link rel="stylesheet" href="styles.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+  </style>
+  <title>Page Title</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
-    <div class="imgbox" style="position: relative; width: 100%; max-width: 2000px;">
-  <img
-    src="images/A_large_blank_world_map_with_oceans_marked_in_blue.svg.png"
-    alt="map"
-    style="width:100%; height:auto; display:block;"
-  >
-        <img id= "popupImg" alt="popup"> 
+  <div class="imgbox" style="position: relative; width: 100%; max-width: 2000px;">
+    <img src="images/A_large_blank_world_map_with_oceans_marked_in_blue.svg.png" alt="map"
+      style="width:100%; height:auto; display:block;">
 
     <!-- Clicked countries display -->
 
-    <div id="progressContainer" style="position:absolute; top:10px; left:10px; width:200px; height:14px; background:#eee; border-radius:10px; overflow:hidden; z-index:500";>
-        <div id="progressBar" style="width:0%; height:100%; background:#2ecc71; transition: width 0.3s ease;"></div>
+    <div id="progressContainer"
+      style="position:absolute; top:10px; left:10px; width:200px; height:14px; background:#eee; border-radius:10px; overflow:hidden; z-index:500"
+      ;>
+      <div id="progressBar" style="width:0%; height:100%; background:#2ecc71; transition: width 0.3s ease;"></div>
     </div>
 
-  
-
-  <!-- SPOT panel -->
+    <!-- SPOT panel -->
     <section class="panel panel-spot" id="spotPanel">
       <div class="panel-inner">
-        <button id="closeSpotPanel">×</button>
+        <button class="closePanel">ï¿½</button>
 
-        <img
-            src="images/Spotlogo.png"
-            alt="SPOT logo"
-            class="spot-logo"
-       />
+        <img src="images/Spotlogo.png" alt="SPOT logo" class="spot-logo" />
 
-        <h2>SPOT · Our Table</h2>
+        <h2>SPOT ï¿½ Our Table</h2>
         <p class="stat">
           SPOT wastes 250gr of food per person each day.
         </p>
         <p class="context">
-          A year, roughly <strong>25,000kg</strong> 
+          A year, roughly <strong>25,000kg</strong>
           <em>(7 euros per kg)</em>.
         </p>
         <p class="highlight">
-        This amounts to <strong> 175,000 euros</strong> on waste every year.
+          This amounts to <strong> 175,000 euros</strong> on waste every year.
         </p>
         <p class="reflect">
-          Next lunch, what’s one small thing you might do differently?
+          Next lunch, whatï¿½s one small thing you might do differently?
         </p>
 
         <div class="choices">
@@ -148,24 +65,56 @@
       </div>
     </section>
 
-  <!-- SVG overlay -->
-  <svg
-    viewBox="0 0 2000 1001"
-    style="position:absolute; inset:0; width:100%; height:100%; pointer-events:auto;"
-  >
-    <defs>
-      <filter id="glow">
-        <feGaussianBlur stdDeviation="6" result="blur"/>
-        <feMerge>
-          <feMergeNode in="blur"/>
-          <feMergeNode in="SourceGraphic"/>
-        </feMerge>
-      </filter>
-    </defs>
+    <section class='panel' id="nigeriaPopup">
+      <div class='panel-inner'>
+        <button class="closePanel">X</button>
 
-    <!-- Mexico -->
-    <polygon
-      points="
+        <h2>Nigeria</h2>
+        <hr>
+      </div>
+    </section>
+
+    <section class='panel' id="mexicoPopup">
+      <div class='panel-inner'>
+        <button class="closePanel">X</button>
+
+        <h2>Mexico</h2>
+        <hr>
+      </div>
+    </section>
+
+    <section class='panel' id="indiaPopup">
+      <div class='panel-inner'>
+        <button class="closePanel">X</button>
+
+        <h2>India</h2>
+        <hr>
+      </div>
+    </section>
+
+    <section class='panel' id="portugalPopup">
+      <div class='panel-inner'>
+        <button class="closePanel">X</button>
+
+        <h2>Portugal</h2>
+        <hr>
+      </div>
+    </section>
+
+    <!-- SVG overlay -->
+    <svg viewBox="0 0 2000 1001" style="position:absolute; inset:0; width:100%; height:100%; pointer-events:auto;">
+      <defs>
+        <filter id="glow">
+          <feGaussianBlur stdDeviation="6" result="blur" />
+          <feMerge>
+            <feMergeNode in="blur" />
+            <feMergeNode in="SourceGraphic" />
+          </feMerge>
+        </filter>
+      </defs>
+
+      <!-- Mexico -->
+      <polygon points="
         496,528
         489,542
         452,537
@@ -180,67 +129,51 @@
         505,505
         518,507
         513,523
-      "
-      fill="rgba(255,0,0,0)"
-      stroke="red"
-      stroke-width="0"
-      filter="url(#glow)"
-      style="pointer-events:auto; cursor:pointer;"
-      onclick="showImg('images/Mexicopanel.png','mexico')"
-    />
+      " class="map-region" onclick="showPanel('mexico')" />
 
-    <!-- Portugal -->
-    <polygon
-      points="
-        952,406 946,390 963,390
-      "
-      fill="rgba(255,0,0,0)"
-      stroke="red"
-      stroke-width="0"
-      filter="url(#glow)"
-      style="pointer-events:auto; cursor:pointer;"
-      onclick="showImg('images/Portugalpanel.png','portugal')"
-    />
+      <!-- Portugal -->
+      <polygon points="
+        949,380 966,380 957,420 946,400
+      " class="map-region" onclick="showPanel('portugal')" />
 
-    <!-- Nigeria -->
-    <polygon
-      points="
-        1024,546 1073,553 1066,582 1042,597 1016,586
-      "
-      fill="rgba(255,0,0,0)"
-      stroke="red"
-      stroke-width="0"
-      filter="url(#glow)"
-      style="pointer-events:auto; cursor:pointer;"
-      onclick="showImg('images/Nigeriapanel.png','nigeria')"
-    />
+      <!-- Nigeria -->
+      <polygon points="
+        1078,556
+        1061,585
+        1042,598
+        1031,593
+        1014,591
+        1020,572
+        1020,553
+        1042,550
+      " class="map-region" onclick="showPanel('nigeria')" />
 
-     <!-- India -->
-    <polygon
-      points="
-        1448,469
-        1432,429
-        1410,431
-        1406,456
-        1390,467
-        1379,498
-        1427,573
-        1457,526
-        1484,506
-        1535,476
-      "
-      fill="rgba(255,0,0,0)"
-      stroke="red"
-      stroke-width="0"
-      filter="url(#glow)"
-      style="pointer-events:auto; cursor:pointer;"
-      onclick="showImg('images/Indiapanel.png','india')"
-    />
-
-  </svg>
-</div>
-
-<link rel="stylesheet" href="style.css">
-<script src="script.js"></script>
+      <!-- India -->
+      <polygon points="
+        1410,433
+        1433,427
+        1436,452
+        1444,465
+        1464,475
+        1484,478
+        1509,475
+        1524,462
+        1532,473
+        1513,497
+        1491,505
+        1455,531
+        1441,566
+        1427,577
+        1404,531
+        1393,513
+        1379,494
+        1396,478
+        1385,478
+        1410,462
+      " class="map-region" onclick="showPanel('india')" />
+    </svg>
+  </div>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js"></script>
 </body>
 </html>
