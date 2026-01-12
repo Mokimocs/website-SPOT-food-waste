@@ -9,15 +9,96 @@
     }
   </style>
   <title>Page Title</title>
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
   <div class="imgbox">
-    <img src="images/A_large_blank_world_map_with_oceans_marked_in_blue.svg.png" alt="map"
-      style="width:100%; height:auto; display:block;">
 
-    <!-- Clicked countries display -->
+    <!-- mapViewport wrapper added for zoom -->
+    <div id="mapViewport">
+      <img id="mapImg" src="images/A_large_blank_world_map_with_oceans_marked_in_blue.svg.png" alt="map"
+        style="width:100%; height:auto; display:block;">
+
+      <!-- SVG overlay -->
+      <svg id="worldSvg" viewBox="0 0 2000 1000"
+        style="position:absolute; inset:0; width:100%; height:100%; pointer-events:auto;">
+        <defs>
+          <filter id="glow">
+            <feGaussianBlur stdDeviation="6" result="blur" />
+            <feMerge>
+              <feMergeNode in="blur" />
+              <feMergeNode in="SourceGraphic" />
+            </feMerge>
+          </filter>
+        </defs>
+
+        <!-- Mexico -->
+        <polygon points="
+          496,528
+          489,542
+          452,537
+          393,502
+          365,473
+          351,442
+          404,449
+          438,463
+          458,484
+          460,509
+          477,526
+          505,505
+          518,507
+          513,523
+        " class="map-region" data-country="mexico" onclick="showPanel('mexico')" />
+
+        <!-- Portugal -->
+        <polygon points="
+          949,380 966,380 957,420 946,400
+        " class="map-region" data-country="portugal" onclick="showPanel('portugal')" />
+
+        <!-- Nigeria -->
+        <polygon points="
+          1078,556
+          1061,585
+          1042,598
+          1031,593
+          1014,591
+          1020,572
+          1020,553
+          1042,550
+        " class="map-region" data-country="nigeria" onclick="showPanel('nigeria')" />
+
+        <!-- India -->
+        <polygon points="
+          1410,433
+          1433,427
+          1436,452
+          1444,465
+          1464,475
+          1484,478
+          1509,475
+          1524,462
+          1532,473
+          1513,497
+          1491,505
+          1455,531
+          1441,566
+          1427,577
+          1404,531
+          1393,513
+          1379,494
+          1396,478
+          1385,478
+          1410,462
+        " class="map-region" data-country="india" onclick="showPanel('india')" />
+
+        <!-- Netherlands / SPOT -->
+        <polygon id="nlRegion" points="1019,315 1032,315 1038,305 1029,301"
+          class="map-region" style="display:none;" onclick="openSpot()" />
+      </svg>
+    </div>
+
+    <!-- Progress Bar -->
 
     <div id="progressContainer"
       style="position:absolute; top:10px; left:10px; width:200px; height:14px; background:#eee; border-radius:10px; overflow:hidden; z-index:500"
@@ -28,11 +109,11 @@
     <!-- SPOT panel -->
     <section class="panel panel-spot" id="spotPanel">
       <div class="panel-inner">
-        <button class="closePanel">�</button>
+        <button class="closePanel">×</button>
 
         <img src="images/Spotlogo.png" alt="SPOT logo" id="spot-logo" />
 
-        <h2>SPOT � Our Table</h2>
+        <h2>SPOT · Our Table</h2>
         <p class="stat">
           SPOT wastes 250gr of food per person each day.
         </p>
@@ -44,7 +125,7 @@
           This amounts to <strong> 175,000 euros</strong> on waste every year.
         </p>
         <p class="reflect">
-          Next lunch, what�s one small thing you might do differently?
+          Next lunch, what’s one small thing you might do differently?
         </p>
 
         <div class="choices">
@@ -143,80 +224,10 @@
       </div>
     </section>
 
-    <!-- SVG overlay -->
-    <svg viewBox="0 0 2000 1000" style="position:absolute; inset:0; width:100%; height:100%; pointer-events:auto;">
-      <defs>
-        <filter id="glow">
-          <feGaussianBlur stdDeviation="6" result="blur" />
-          <feMerge>
-            <feMergeNode in="blur" />
-            <feMergeNode in="SourceGraphic" />
-          </feMerge>
-        </filter>
-      </defs>
-
-      <!-- Mexico -->
-      <polygon points="
-        496,528
-        489,542
-        452,537
-        393,502
-        365,473
-        351,442
-        404,449
-        438,463
-        458,484
-        460,509
-        477,526
-        505,505
-        518,507
-        513,523
-      " class="map-region" onclick="showPanel('mexico')" />
-
-      <!-- Portugal -->
-      <polygon points="
-        949,380 966,380 957,420 946,400
-      " class="map-region" onclick="showPanel('portugal')" />
-
-      <!-- Nigeria -->
-      <polygon points="
-        1078,556
-        1061,585
-        1042,598
-        1031,593
-        1014,591
-        1020,572
-        1020,553
-        1042,550
-      " class="map-region" onclick="showPanel('nigeria')" />
-
-      <!-- India -->
-      <polygon points="
-        1410,433
-        1433,427
-        1436,452
-        1444,465
-        1464,475
-        1484,478
-        1509,475
-        1524,462
-        1532,473
-        1513,497
-        1491,505
-        1455,531
-        1441,566
-        1427,577
-        1404,531
-        1393,513
-        1379,494
-        1396,478
-        1385,478
-        1410,462
-      " class="map-region" onclick="showPanel('india')" />
-    </svg>
   </div>
-  <link rel="stylesheet" href="style.css">
+
   <script src="script.js"></script>
 </body>
 
 </html>
+```

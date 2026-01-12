@@ -139,3 +139,11 @@
     width: 20vw;
     content-visibility: visible;
 }
+
+#mapViewport {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    transform-origin: 0 0;
+    transition: transform 600ms ease;
+}

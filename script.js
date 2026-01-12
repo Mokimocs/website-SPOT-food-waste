@@ -1,52 +1,145 @@
-// tracking clicks
 const clickedCountries = new Set();
 const totalCountries = 4;
 
-let readyToShowSpot = false;
+let allDone = false;           // all 4 visited
+let spotMode = false;          // switched to NL map
+let waitingForNLClick = false; // NL is shown and zoomed into
 
-// popup images controller
-window.showPanel = function (countryKey) {
+function parsePoints(pointsStr) {
+  return pointsStr
+    .trim()
+    .split(/\s+/)
+    .map(pair => {
+      const [x, y] = pair.split(",").map(Number);
+      return { x, y };
+    });
+}
+
+function centroidOfPoints(points) {
+  // centroid 
+  const sum = points.reduce((acc, p) => ({ x: acc.x + p.x, y: acc.y + p.y }), { x: 0, y: 0 });
+  return { x: sum.x / points.length, y: sum.y / points.length };
+}
+
+function zoomToViewBoxPoint(vx, vy, scale) {
+  const viewport = document.getElementById("mapViewport");
+  const rect = viewport.getBoundingClientRect();
+
+  const cx = rect.width / 2;
+  const cy = rect.height / 2;
+
+  // viewBox is 2000x1000
+  const px = (vx / 2000) * rect.width;
+  const py = (vy / 1000) * rect.height;
+
+  const tx = cx - px * scale;
+  const ty = cy - py * scale;
+
+  viewport.style.transform = `translate(${tx}px, ${ty}px) scale(${scale})`;
+}
+
+function resetZoom() {
+  document.getElementById("mapViewport").style.transform = "none";
+}
+
+window.showPanel = function(countryKey) {
+  // If SPOT mode, ignore other countries panels
+  if (spotMode) return;
+
   const panel = document.getElementById(`${countryKey}Popup`);
+  if (!panel) return;
+
   panel.style.visibility = "visible";
   panel.classList.add("animation");
 
-  if (countryKey) {
-    clickedCountries.add(countryKey);
+  // keeping track of visited countries
+  const before = clickedCountries.size;
+  clickedCountries.add(countryKey);
+  const after = clickedCountries.size;
 
-    if (clickedCountries.size == 4) {
-      readyToShowSpot = true;
-    }
+  // Update progress bar
+  const progress = (after / totalCountries) * 100;
+  document.getElementById("progressBar").style.width = progress + "%";
+
+  // zoom into polygons
+  const poly = document.querySelector(`polygon[data-country="${countryKey}"]`);
+  if (poly) {
+    const pts = parsePoints(poly.getAttribute("points"));
+    const c = centroidOfPoints(pts);
+    zoomToViewBoxPoint(c.x, c.y, 2.3); //we can change this scale of zoom
   }
 
-  // Countries Clicked Display
-
-  if (countryKey) {
-    clickedCountries.add(countryKey);
-
-    const progress =
-      (clickedCountries.size / totalCountries) * 100;
-
-    document.getElementById("progressBar").style.width =
-      progress + "%";
+  // If this click completed all 4, mark done (but doesnt switch yet)
+  if (after === totalCountries && after !== before) {
+    allDone = true;
   }
 };
 
-// Close popup
+// --- Close buttons for side panels ---
 const panels = document.getElementsByClassName('side-panel');
 const closePanelButtons = document.getElementsByClassName('closePanel');
-Array.from(closePanelButtons).forEach(panel => panel.addEventListener('click', () => {
+
+Array.from(closePanelButtons).forEach(btn => btn.addEventListener('click', () => {
+  // Close all side panels
   for (let i = 0; i < panels.length; i++) {
     panels[i].style.visibility = 'hidden';
     panels[i].classList.remove("animation");
   }
-  document.getElementById('spotPanel').style.display = 'none';
-  if (readyToShowSpot) {
-    document.getElementById('spotPanel').style.display = 'block';
-    readyToShowSpot = false;
-  }
-}))
 
-// Choice buttons logic
+  // Reset zoom back to full map after closing a country panel
+  resetZoom();
+
+  // If all countries visited, switch to SPOT mode
+  if (allDone && !spotMode) {
+    enterSpotMode();
+  }
+}));
+
+function enterSpotMode() {
+  spotMode = true;
+
+  // swapping map image (background)
+  const mapImg = document.getElementById("mapImg");
+  mapImg.src = "images/mapNL.png";
+
+  // hides other polygons
+  document.querySelectorAll("polygon.map-region[data-country]").forEach(p => {
+    p.style.display = "none";
+  });
+
+  // shows NL polygon
+  const nl = document.getElementById("nlRegion");
+  nl.style.display = "block";
+
+  // No zoom at start, zooms in after 2 seconds
+  resetZoom();
+  waitingForNLClick = false;
+
+  setTimeout(() => {
+    const box = nl.getBBox();
+    const cx = box.x + box.width / 2;
+    const cy = box.y + box.height / 2;
+
+    zoomToViewBoxPoint(cx, cy, 4.0);
+
+    waitingForNLClick = true;
+  }, 2000); //can also be changed
+}
+
+
+// spot panel
+window.openSpot = function() {
+  if (!waitingForNLClick) return;
+  document.getElementById("spotPanel").style.display = "block";
+  waitingForNLClick = false;
+};
+
+// closes spot panel
+document.querySelector("#spotPanel .closePanel")?.addEventListener("click", () => {
+  document.getElementById("spotPanel").style.display = "none";
+});
+
+// choice buttons
 const choiceButtons = document.querySelectorAll(".choice-btn");
 const choiceResult = document.getElementById("choiceResult");
 
@@ -54,9 +147,9 @@ const messages = {
   portion:
     "If 100 people at SPOT took smaller portions first, we could prevent hundreds of kilos of food waste per year.",
   leftovers:
-    "If 100 people regularly saved leftovers, we�d turn a big share of our �waste� into tomorrow�s lunch.",
+    "If 100 people regularly saved leftovers, we’d turn a big share of our ‘waste’ into tomorrow’s lunch.",
   veggies:
-    "If 100 people finished their veggies more often, we�d cut both food and resource waste linked to vegetables.",
+    "If 100 people finished their veggies more often, we’d cut both food and resource waste linked to vegetables.",
 };
 
 choiceButtons.forEach((btn) => {
