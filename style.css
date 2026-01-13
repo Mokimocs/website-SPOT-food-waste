@@ -84,18 +84,26 @@
 .side-panel {
     position: absolute;
     content-visibility: hidden;
-    left: 80%;
-    top: 0%;
+    left: 75%;
+    top: 20%;
     z-index: 20;
     visibility: hidden;
     width: 0;
     transition: all 1s;
     animation-duration: 1s;
-    height: 100vh;
+    height: 60vh;
     background: white;
     border-radius: 12px;
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
     pointer-events: auto;
+}
+
+p {
+
+}
+
+h1 {
+
 }
 
 .closePanel {
@@ -106,6 +114,7 @@
     border: none;
     font-size: 26px;
     cursor: pointer;
+    z-index: 10;
 }
 
 .choices {
@@ -129,14 +138,14 @@
 }
 
 .map-region {
-    fill: rgba(0, 255, 0, 1);
+    fill: rgba(0, 255, 0, 0);
     cursor: pointer;
     filter: url(#glow);
     pointer-events: auto;
 }
 
 .animation {
-    width: 20vw;
+    width: 25vw;
     content-visibility: visible;
 }
 
@@ -146,4 +155,58 @@
     overflow: hidden;
     transform-origin: 0 0;
     transition: transform 600ms ease;
+}
+
+#nigeriaPopup {
+  background-image: url(Images/nigeria-flag.jpg);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+#mexicoPopup {
+  background-image: url(Images/mexico-flag.jpg);
+  background-size: 90%;
+  background-size: cover;
+  background-position: bottom;
+  background-repeat: no-repeat;
+}
+
+#indiaPopup {
+  background-image: url(Images/india-flag.jpg);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+#portugalPopup {
+  background-image: url(Images/portugal-flag.jpg);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+#nigeriaPopup .panel-inner{
+  text-align: justify;
+  margin-left: 60px;
+  margin-right: 60px;
+}
+
+#mexicoPopup .panel-inner{
+  text-align: justify;
+    margin-left: 20px;
+  margin-right: 20px;
+}
+
+#indiaPopup .panel-inner{
+  text-align: justify;
+  margin-left: 25px;
+  margin-right: 25px;
+}
+
+#portugalPopup .panel-inner{
+  text-align: end;
+  margin-left: 60%;
+  margin-top: 10px;
+  color: #ffffff;
 }
