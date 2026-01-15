@@ -229,7 +229,7 @@ html {
 
 #portugalPopup .panel-inner {
     text-align: right;
-    color: #ffffff;
+    color: #000000;
 }
 
 @media (max-width: 768px) {
