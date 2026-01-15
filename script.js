@@ -134,9 +134,20 @@ window.openSpot = function() {
   waitingForNLClick = false;
 };
 
+
 // closes spot panel
+function showFinalOverlay() {
+  const final = document.getElementById("finalOverlay");
+  if (!final) return;
+  final.style.display = "block";
+}
+
 document.querySelector("#spotPanel .closePanel")?.addEventListener("click", () => {
   document.getElementById("spotPanel").style.display = "none";
+
+  setTimeout(() => {
+      showFinalOverlay();
+  }, 2000);
 });
 
 // choice buttons
@@ -159,6 +170,10 @@ choiceButtons.forEach((btn) => {
   });
 });
 
+window.openFinalPdf = function () {
+  window.open("pdf/Learn more about Food Waste.pdf", "_blank");
+};
+
 function closeSplash() {
     const splash = document.getElementById("startimageOverlay");
     if (!splash) return;
@@ -172,23 +187,5 @@ document.getElementById("startimageOverlay")?.addEventListener("click", closeSpl
 
 document.body.style.overflow = "hidden";
 
-window.addEventListener("load", () => {
-  const splash = document.getElementById("startimageOverlay");
-  if (!splash) return;
 
-  // Force it to show on every reload
-  splash.style.display = "flex";     // or "block" depending on your CSS
-  splash.style.visibility = "visible";
-
-  // Lock scroll while splash is up
-  document.body.style.overflow = "hidden";
-});
-
-window.addEventListener("pageshow", (e) => {
-  if (!e.persisted) return; // only when restored from bfcache
-  const splash = document.getElementById("startimageOverlay");
-  if (!splash) return;
-  splash.style.display = "flex";
-  document.body.style.overflow = "hidden";
-});
 
