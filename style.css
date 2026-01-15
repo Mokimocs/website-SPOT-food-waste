@@ -204,19 +204,19 @@ html {
 }
 
 #nigeriaPopup {
-    background-image: url(". ./images/nigeria-flag.jpg");
+    background-image: url("images/flags/nigeria-flag.jpg");
 }
 
 #mexicoPopup {
-    background-image: url(". ./images/mexico-flag.jpg");
+    background-image: url("images/flags/mexico-flag.jpg");
 }
 
 #indiaPopup {
-    background-image: url(". ./images/india-flag.jpg");
+    background-image: url("images/flags/india-flag.jpg");
 }
 
 #portugalPopup {
-    background-image: url(". ./images/portugal-flag.jpg");
+    background-image: url("images/flags/portugal-flag.jpg");
 }
 
 #nigeriaPopup .panel-inner,
