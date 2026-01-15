@@ -158,3 +158,37 @@ choiceButtons.forEach((btn) => {
     choiceResult.textContent = messages[key] || "Every small change helps.";
   });
 });
+
+function closeSplash() {
+    const splash = document.getElementById("startimageOverlay");
+    if (!splash) return;
+
+    resetZoom();
+    splash.style.display = "none";
+    document.body.style.overflow = "";
+}
+
+document.getElementById("startimageOverlay")?.addEventListener("click", closeSplash);
+
+document.body.style.overflow = "hidden";
+
+window.addEventListener("load", () => {
+  const splash = document.getElementById("startimageOverlay");
+  if (!splash) return;
+
+  // Force it to show on every reload
+  splash.style.display = "flex";     // or "block" depending on your CSS
+  splash.style.visibility = "visible";
+
+  // Lock scroll while splash is up
+  document.body.style.overflow = "hidden";
+});
+
+window.addEventListener("pageshow", (e) => {
+  if (!e.persisted) return; // only when restored from bfcache
+  const splash = document.getElementById("startimageOverlay");
+  if (!splash) return;
+  splash.style.display = "flex";
+  document.body.style.overflow = "hidden";
+});
+
