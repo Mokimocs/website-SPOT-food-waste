@@ -35,22 +35,28 @@ function zoomToViewBoxPoint(vx, vy, scale) {
   const tx = cx - px * scale;
   const ty = cy - py * scale;
 
-  viewport.style.transform = `translate(${tx}px, ${ty}px) scale(${scale})`;
+  viewport.style.setProperty("--tx", `${tx}px`);
+  viewport.style.setProperty("--ty", `${ty}px`);
+  viewport.style.setProperty("--scale", scale);
+
 }
 
 function resetZoom() {
-  document.getElementById("mapViewport").style.transform = "none";
+  const viewport = document.getElementById("mapViewport");
+  viewport.style.setProperty("--tx", "0px");
+  viewport.style.setProperty("--ty", "0px");
+  viewport.style.setProperty("--scale", "1");
 }
 
-window.showPanel = function(countryKey) {
+
+window.showPanel = function (countryKey) {
   // If SPOT mode, ignore other countries panels
   if (spotMode) return;
 
   const panel = document.getElementById(`${countryKey}Popup`);
   if (!panel) return;
 
-  panel.style.visibility = "visible";
-  panel.classList.add("animation");
+  panel.classList.add("open");
 
   // keeping track of visited countries
   const before = clickedCountries.size;
@@ -66,7 +72,8 @@ window.showPanel = function(countryKey) {
   if (poly) {
     const pts = parsePoints(poly.getAttribute("points"));
     const c = centroidOfPoints(pts);
-    zoomToViewBoxPoint(c.x, c.y, 2.3); //we can change this scale of zoom
+    zoomToViewBoxPoint(c.x, c.y, responsiveScale(2.3));
+
   }
 
   // If this click completed all 4, mark done (but doesnt switch yet)
@@ -75,6 +82,19 @@ window.showPanel = function(countryKey) {
   }
 };
 
+function responsiveScale(desktopScale) {
+  return window.innerWidth < 768
+    ? desktopScale * 0.75
+    : desktopScale;
+}
+
+window.addEventListener("resize", () => {
+  if (!spotMode && !waitingForNLClick) {
+    resetZoom();
+  }
+});
+
+
 // --- Close buttons for side panels ---
 const panels = document.getElementsByClassName('side-panel');
 const closePanelButtons = document.getElementsByClassName('closePanel');
@@ -82,8 +102,8 @@ const closePanelButtons = document.getElementsByClassName('closePanel');
 Array.from(closePanelButtons).forEach(btn => btn.addEventListener('click', () => {
   // Close all side panels
   for (let i = 0; i < panels.length; i++) {
-    panels[i].style.visibility = 'hidden';
-    panels[i].classList.remove("animation");
+    panels[i].classList.remove("open");
+
   }
 
   // Reset zoom back to full map after closing a country panel
@@ -120,7 +140,7 @@ function enterSpotMode() {
     const cx = box.x + box.width / 2;
     const cy = box.y + box.height / 2;
 
-    zoomToViewBoxPoint(cx, cy, 4.0);
+    zoomToViewBoxPoint(cx, cy, responsiveScale(4.0));
 
     waitingForNLClick = true;
   }, 2000); //can also be changed
@@ -128,7 +148,7 @@ function enterSpotMode() {
 
 
 // spot panel
-window.openSpot = function() {
+window.openSpot = function () {
   if (!waitingForNLClick) return;
   document.getElementById("spotPanel").style.display = "block";
   waitingForNLClick = false;
@@ -146,7 +166,7 @@ document.querySelector("#spotPanel .closePanel")?.addEventListener("click", () =
   document.getElementById("spotPanel").style.display = "none";
 
   setTimeout(() => {
-      showFinalOverlay();
+    showFinalOverlay();
   }, 2000);
 });
 
@@ -175,17 +195,14 @@ window.openFinalPdf = function () {
 };
 
 function closeSplash() {
-    const splash = document.getElementById("startimageOverlay");
-    if (!splash) return;
+  const splash = document.getElementById("startimageOverlay");
+  if (!splash) return;
 
-    resetZoom();
-    splash.style.display = "none";
-    document.body.style.overflow = "";
+  resetZoom();
+  splash.style.display = "none";
+  document.body.style.overflow = "";
 }
 
 document.getElementById("startimageOverlay")?.addEventListener("click", closeSplash);
 
 document.body.style.overflow = "hidden";
-
-
-

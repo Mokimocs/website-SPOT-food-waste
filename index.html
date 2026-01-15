@@ -2,6 +2,8 @@
 <html>
 
 <head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <style>
     * {
       margin: 0;
@@ -13,8 +15,8 @@
 </head>
 
 <body>
-<div id="startimageOverlay" class="start-overlay" role="button" aria-label="Enter site">
-  <img src="images/Intro_1st_page_Horizontal.png" alt="Start screen" class="start-image">
+  <div id="startimageOverlay" class="start-overlay" role="button" aria-label="Enter site">
+    <img src="images/Intro_1st_page_Horizontal.png" alt="Start screen" class="start-image">
   </div>
 
   <div class="imgbox">
@@ -104,29 +106,12 @@
 
     <!-- Progress Bar -->
 
-    <div id="progressContainer"
-      style="position: absolute; 
-      top: 10px; left: 10px; 
-      width: 15%; 
-      height: 17px; 
-      background: #bfbfbf; 
-      border-radius: 10px; 
-      overflow: hidden; 
-      z-index: 500"
-      ;>
-      <div id="progressBar" style="width: 0%; 
-      height: 100%; 
-      background-image: linear-gradient(to right, red, orange); 
-      transition: 
-      width 0.3s ease;"></div>
-    
+    <div id="progressContainer">
+      <div id="progressBar"></div>
     </div>
 
-      <span style="position:absolute; 
-      top:8px; 
-      left:15.7%; z-index:500; font-size:22px;">
-         Countries Clicked
-        </span>
+
+    <span class="progress-label">Countries Clicked</span>
 
     <!-- SPOT panel -->
     <section class="panel panel-spot" id="spotPanel">
@@ -197,12 +182,13 @@
         <br>
         <p>
           Every year, over 35% of the food produced in Mexico is wasted — an estimated 25 billion dollars worth.
-          <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-          When you waste food what do you usually waste first - vegetables, fruit, leftovers?
-          <br><br>
-          Source:<br>
-          (Mexico’s Answer to Food Waste | Manu R, 2025)<br>
-          (Expertise in Waste Solutions | WasteCulture, 2020)
+        <div class="spaced-text"></div>
+
+        When you waste food what do you usually waste first - vegetables, fruit, leftovers?
+        <br><br>
+        Source:<br>
+        (Mexico’s Answer to Food Waste | Manu R, 2025)<br>
+        (Expertise in Waste Solutions | WasteCulture, 2020)
         </p>
       </div>
     </section>
@@ -217,13 +203,13 @@
         <p>
           In India 12% of the population is undernourished, whilst the average household discards 55 kg of food
           annually, totalling a national loss of 78.2 million tonnes.
-          <br><br><br><br><br><br><br><br><br><br><br><br>
-          Do you know about this hunger and waste paradox?<br><br>
-          Source:<br>
-          (India’s food waste is turning into an environmental time bomb | Choudhury, 2025)<br>
-          (The State of Food Security and Nutrition in the World 2025, 2025)<br>
-          (India | Global Hunger Index, 2025)<br>
-          (Food Waste Index Report | Nations, 2024)
+        <div class="spaced-text"></div>
+        Do you know about this hunger and waste paradox?<br><br>
+        Source:<br>
+        (India’s food waste is turning into an environmental time bomb | Choudhury, 2025)<br>
+        (The State of Food Security and Nutrition in the World 2025, 2025)<br>
+        (India | Global Hunger Index, 2025)<br>
+        (Food Waste Index Report | Nations, 2024)
 
         </p>
       </div>
@@ -244,31 +230,30 @@
           Source:
         </p>
       </div>
-      <p class="panel-inner" style="margin: 0; padding-top: 0; line-height: normal; color: #ffffff;">(Portugal: Food Waste per Capita, by Sector 2022 | Statista, 2022)</p>
+      <div class="panel-inner source-text">
+        (Portugal: Food Waste per Capita, by Sector 2022 | Statista, 2022)
+      </div>
+
     </section>
 
   </div>
 
   <div id="finalOverlay" class="final-overlay" aria-hidden="true">
-  <img id="finalImg" src="images/Outro_page_Horizontal.png" alt="End screen" class="final-image">
+    <img id="finalImg" src="images/Outro_page_Horizontal.png" alt="End screen" class="final-image">
 
-  <!-- clickable button -->
-  <svg id="finalSvg" viewBox="0 0 2000 1000"
-       class="final-svg" aria-hidden="true">
-    
-    <polygon id="PdfBtn"
-      points=" 
+    <!-- clickable button -->
+    <svg id="finalSvg" viewBox="0 0 2000 1000" class="final-svg" aria-hidden="true">
+
+      <polygon id="PdfBtn" points=" 
     1250,720
     1750,720
     1900,820
     1900,960
     1400,960
     1250,860
-    "
-      class="final-hotspot"
-      onclick="openFinalPdf()" />
-  </svg>
-</div>
+    " class="final-hotspot" onclick="openFinalPdf()" />
+    </svg>
+  </div>
 
   <script src="script.js"></script>
 </body>
