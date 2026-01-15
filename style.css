@@ -77,7 +77,8 @@
 .panel-inner {
     padding: 22px;
     font-family: system-ui, Arial, sans-serif;
-    line-height: 1.35;
+    font-weight: bold;
+    line-height: 1.30;
     position: relative;
 }
 
@@ -87,23 +88,14 @@
     left: 75%;
     top: 20%;
     z-index: 20;
-    visibility: hidden;
     width: 0;
     transition: all 1s;
     animation-duration: 1s;
-    height: 60vh;
+    height: 0vh;
     background: white;
     border-radius: 12px;
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
     pointer-events: auto;
-}
-
-p {
-
-}
-
-h1 {
-
 }
 
 .closePanel {
@@ -162,6 +154,7 @@ h1 {
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+  height: 50vh;
 }
 
 #mexicoPopup {
@@ -170,6 +163,7 @@ h1 {
   background-size: cover;
   background-position: bottom;
   background-repeat: no-repeat;
+  height: 64vh;
 }
 
 #indiaPopup {
@@ -177,6 +171,7 @@ h1 {
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+  height: 64vh;
 }
 
 #portugalPopup {
@@ -184,18 +179,20 @@ h1 {
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+  height: 62vh;
 }
 
 #nigeriaPopup .panel-inner{
   text-align: justify;
-  margin-left: 60px;
-  margin-right: 60px;
+  margin-left: 90px;
+  margin-right: 90px;
 }
 
 #mexicoPopup .panel-inner{
-  text-align: justify;
-    margin-left: 20px;
-  margin-right: 20px;
+  text-align:left;
+  margin-left: 60px;
+  margin-top: 5px;
+  margin-right: 30px;
 }
 
 #indiaPopup .panel-inner{
