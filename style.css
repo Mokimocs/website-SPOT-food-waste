@@ -150,7 +150,7 @@
 }
 
 #nigeriaPopup {
-  background-image: url(images/nigeria-flag.jpg);
+  background-image: url("./images/nigeria-flag.jpg");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -158,7 +158,7 @@
 }
 
 #mexicoPopup {
-  background-image: url(images/mexico-flag.jpg);
+  background-image: url("./images/mexico-flag.jpg");
   background-size: 90%;
   background-size: cover;
   background-position: bottom;
@@ -167,7 +167,7 @@
 }
 
 #indiaPopup {
-  background-image: url(images/india-flag.jpg);
+  background-image: url("./images/india-flag.jpg");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -175,7 +175,7 @@
 }
 
 #portugalPopup {
-  background-image: url(images/portugal-flag.jpg);
+  background-image: url("./images/portugal-flag.jpg");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
