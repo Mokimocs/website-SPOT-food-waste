@@ -176,11 +176,11 @@ const choiceResult = document.getElementById("choiceResult");
 
 const messages = {
   portion:
-    "If 100 people at SPOT took smaller portions first, we could prevent hundreds of kilos of food waste per year.",
+    "If 30 people at SPOT took smaller portions first, we could prevent hundreds of kilos of food waste per year.",
   leftovers:
     "If 100 people regularly saved leftovers, we’d turn a big share of our ‘waste’ into tomorrow’s lunch.",
-  veggies:
-    "If 100 people finished their veggies more often, we’d cut both food and resource waste linked to vegetables.",
+  spoilage:
+    "Prioritising foods that spoil faster helps reduce waste caused by quality loss.",
 };
 
 choiceButtons.forEach((btn) => {
