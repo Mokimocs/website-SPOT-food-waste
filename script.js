@@ -203,6 +203,32 @@ function closeSplash() {
   document.body.style.overflow = "";
 }
 
-document.getElementById("startimageOverlay")?.addEventListener("click", closeSplash);
+function checkOrientation (){
+  const rotateOverlay = document.getElementById("rotateOverlay");
+  if (!rotateOverlay) return;
 
-document.body.style.overflow = "hidden";
+  const isPhone = Math.min(window.innerWidth, window.innerHeight) <= 768;
+
+  const isPortrait = 
+    screen.orientation
+    ? screen.orientation.type.includes("portrait")
+    : window.matchMedia("(orientation: portrait)").matches;
+
+  if (isPhone && isPortrait){
+    rotateOverlay.style.display = "flex";
+    document.body.style.overflow = "hidden";
+  } else {
+    rotateOverlay.style.display = "none";
+    document.body.style.overflow = "";
+  }
+}
+
+checkOrientation();
+
+window.addEventListener("resize", checkOrientation);
+
+if (screen.orientation){
+  screen.orientation.addEventListener("change", checkOrientation);
+}
+
+document.getElementById("startimageOverlay")?.addEventListener("click", closeSplash);
