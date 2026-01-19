@@ -298,18 +298,20 @@ html {
 
 /* Final Image */
 
-.final-overlay {
-    position: fixed;
-    inset: 0;
-    z-index: 9998;
-    display: none;
+.final-overlay{
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
 }
 
-.final-image {
-    width: 95vw;
-    height: 95vh;
-    object-fit: cover;
-    display: block;
+.final-image{
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+  display: block;
 }
 
 .final-svg {
