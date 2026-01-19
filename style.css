@@ -308,7 +308,7 @@ html {
 .final-image {
     width: 95vw;
     height: 95vh;
-    object-fit: cover;
+    object-fit: contain;
     display: block;
 }
 
