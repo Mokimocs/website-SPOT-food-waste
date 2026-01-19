@@ -302,17 +302,15 @@ html {
 inset: 0; 
 z-index: 9998; 
 display: none; 
+}
 
-  display: flex;
-  align-items: center;
-  justify-content: center; } 
 
 .final-image { 
 
-    width: 95vw; 
+    width: 103vw; 
     height: auto; 
-    max-height: 95vh;
-    object-fit: contain; 
+    max-height: 97vh;
+    object-fit: cover; 
     display: block;
 
 } 
