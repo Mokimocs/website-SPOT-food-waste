@@ -169,7 +169,8 @@ html {
 }
 
 .map-region {
-    fill: rgba(0, 255, 0, 0);
+    fill: rgba(0, 255, 0, 0.4);
+    stroke: #ff0000;
     cursor: pointer;
     filter: url(#glow);
     pointer-events: auto;

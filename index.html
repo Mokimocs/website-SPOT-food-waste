@@ -31,6 +31,7 @@
 
       <!-- SVG overlay -->
       <svg id="worldSvg" viewBox="0 0 2000 1000"
+        preserveAspectRatio="none"
         style="position:absolute; inset:0; width:100%; height:100%; pointer-events:auto;">
         <defs>
           <filter id="glow">
@@ -41,6 +42,8 @@
             </feMerge>
           </filter>
         </defs>
+
+         <g transform="translate(0, 35)">
 
         <!-- Mexico -->
         <polygon points="
@@ -102,10 +105,19 @@
         " class="map-region" data-country="india" onclick="showPanel('india')" />
 
         <!-- Netherlands / SPOT -->
-        <polygon id="nlRegion" points="1019,315 1032,315 1038,305 1029,301" class="map-region" style="display:none;"
+        <polygon id="nlRegion" points="1019,315 1032,315 1038,305 1029,301" class="map-region" style="display:none;" 
+        transform="
+            translate(0, -7)
+            translate(1028, 310)
+            scale(1.3)
+            translate(-1028, -310)
+"
+
           onclick="openSpot()" />
+          </g>
       </svg>
     </div>
+
 
     <!-- Progress Bar -->
 
